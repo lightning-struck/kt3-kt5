@@ -1,0 +1,11 @@
+@import '../../../app/shared/styles/variables';
+
+.HomeDiscounts {
+    &__title {
+        font-size: $fz_m;
+        margin-bottom: $space_m;
+    }
+    &__products {
+        display: flex;
+    }
+}

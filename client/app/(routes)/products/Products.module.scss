@@ -1,0 +1,20 @@
+@import '../../shared/styles/variables';
+.Products {
+  display: flex;
+  &__sorting {
+  }
+  &__content {
+    width: 100%;
+    margin-left: $space_m;
+    &__info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

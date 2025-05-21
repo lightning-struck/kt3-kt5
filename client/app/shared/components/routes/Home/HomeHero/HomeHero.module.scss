@@ -1,0 +1,40 @@
+.Hero {
+  background-color: #211c24;
+  display: flex;
+  min-height: 632px;
+  padding: 0px 160px;
+  justify-content: space-between;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+  }
+  &__content > * {
+    margin-bottom: 12px;
+  }
+  &__superscript {
+    font-size: 25px;
+    line-height: 32px;
+    font-weight: 400;
+    color: rgba(#fff, 0.4);
+  }
+  &__title {
+    font-family: var(--font-abel);
+    line-height: 72px;
+    letter-spacing: -1%;
+    font-size: 96px;
+    color: #fff;
+  }
+  &__subtitle {
+    line-height: 24px;
+    font-style: italic;
+    font-size: 18px;
+    color: #909090;
+  }
+  &__image {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

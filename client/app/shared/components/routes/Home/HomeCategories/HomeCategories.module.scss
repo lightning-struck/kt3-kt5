@@ -1,0 +1,39 @@
+@import '../../../../styles/variables';
+.HomeCategories {
+  height: 352px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $space_m;
+    &_title {
+      font-size: 24px;
+    }
+    &_selector {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      :nth-child(2) {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    &_plate {
+      font-size: $fz_s;
+      width: 160px;
+      height: 128px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 12px;
+      background-color: $gray;
+      border-radius: $brad_m;
+    }
+  }
+}

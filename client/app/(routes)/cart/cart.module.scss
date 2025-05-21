@@ -1,0 +1,147 @@
+@import '../../shared/styles/variables';
+
+.wrapper {
+  padding: 112px 160px 112px 160px;
+  gap: 48px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.product {
+  display: flex;
+  gap: 16px;
+  padding: 16px 0 16px 0;
+  justify-content: space-between;
+
+  &__text {
+    width: 190px;
+    height: 80px;
+    min-width: 106px;
+    gap: 8px;
+  }
+
+  &__number {
+    width: 42px;
+    display: flex;
+    gap: 8px;
+    padding: 8px 16px 8px 16px;
+    border-radius: 4px;
+    border: 0.5px solid #d9d9d9;
+  }
+
+  &__quantity {
+    width: 106;
+    gap: 8px;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+
+    &_price {
+      align-items: center;
+      width: 63px;
+      display: flex;
+      gap: 8px;
+    }
+
+    &_button {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-abezee);
+    font-weight: 400;
+    font-style: italic;
+    font-size: $fz_s;
+    line-height: 24px;
+  }
+
+  &__id {
+    font-family: var(--font-abel);
+    font-weight: 400;
+    font-size: $fz_xs;
+    line-height: 24px;
+  }
+}
+
+.cart {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 16px 0 16px 0;
+    justify-content: space-between;
+  }
+}
+.order {
+  width: 408;
+  gap: 24px;
+  display: flex;
+  align-items: center;
+  &__text {
+    font-family: var(--font-abezee);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  &__input {
+    font-family: var(--font-abel);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    width: 408px;
+    height: 56px;
+    justify-content: space-between;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    border-radius: 7px;
+    border-width: 0.5px;
+  }
+}
+
+.estimated {
+  &__row {
+    width: 408;
+    height: 32;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-abel);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 32px;
+    color: #545454;
+  }
+}
+
+.total {
+  width: 408;
+  height: 32;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-abezee);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.checkout {
+  padding: 16 0 16 0;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bonus {
+  padding: 16 0 16 0;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+}

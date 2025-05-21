@@ -1,0 +1,24 @@
+.Pagination {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  &__items {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    &__mid {
+      display: flex;
+      gap: 6px;
+    }
+  }
+  &__arrow_right,
+  &__arrow_left {
+    cursor: pointer;
+  }
+  &__arrow_left {
+    transform: rotate(-90deg);
+  }
+  &__arrow_right {
+    transform: rotate(90deg);
+  }
+}

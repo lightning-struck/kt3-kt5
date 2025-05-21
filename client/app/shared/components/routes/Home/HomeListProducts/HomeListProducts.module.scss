@@ -1,0 +1,22 @@
+@import '../../../../styles/variables';
+
+.HomeListProducts {
+  &__selector {
+    display: flex;
+    gap: $space_s;
+    &_item {
+      cursor: pointer;
+      font-size: $fz_s;
+      margin-bottom: $space_s;
+    }
+    &_item_active {
+      border-bottom: 2px solid $black;
+    }
+  }
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+}

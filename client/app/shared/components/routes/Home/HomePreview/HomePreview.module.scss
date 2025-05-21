@@ -1,0 +1,41 @@
+.preview {
+  display: flex;
+  align-items: center;
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    height: 640px;
+    padding: 0px 32px 56px 32px;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+
+    &_title {
+      font-size: 33px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 48px;
+      text-align: left;
+      color: #000000;
+    }
+
+    &_description {
+      font-size: 14px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 24px;
+      color: #909090;
+    }
+
+    &_image {
+      object-fit: cover;
+    }
+
+    &_UI {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+}

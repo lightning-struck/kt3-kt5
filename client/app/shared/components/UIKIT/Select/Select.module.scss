@@ -1,0 +1,38 @@
+@import '../../../styles/variables';
+.Select {
+  position: relative;
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1.5px solid $darkgray;
+    padding: 6px;
+    width: 160px;
+    &__arrow {
+    }
+    &__arrow.active {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__content {
+    width: 160px;
+    position: absolute;
+    top: 46px;
+    border: 1.5px solid $darkgray;
+    border-radius: 6px;
+    &__item {
+      cursor: pointer;
+      padding: 6px;
+    }
+    &__item.active,
+    &__item.active:hover {
+      background-color: $darkgray;
+      color: $white;
+    }
+    &__item:hover {
+      background-color: $gray;
+    }
+  }
+}

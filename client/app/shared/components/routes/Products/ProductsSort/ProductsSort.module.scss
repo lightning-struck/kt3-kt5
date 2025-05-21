@@ -1,0 +1,31 @@
+@import '../../../../styles/variables';
+.ProductsSort {
+  &__head {
+    cursor: pointer;
+    border-bottom: 1px solid $darkgray;
+    display: flex;
+    justify-content: space-between;
+    width: 256px;
+    height: 48px;
+    align-items: center;
+    &__arrow {
+    }
+    &__arrow.active {
+      transform: rotate(180deg);
+    }
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    &__item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      &__count {
+        color: $darkgray;
+        font-size: 12px;
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+@import '../../../styles/variables';
+.Checkbox {
+  border-radius: 3px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid $gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  svg {
+    width: 8px;
+    height: 8px;
+  }
+}
+.active {
+  border: 2px solid $black;
+  background-color: $black;
+}
