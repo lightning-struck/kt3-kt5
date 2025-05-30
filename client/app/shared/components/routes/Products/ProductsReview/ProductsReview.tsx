@@ -3,7 +3,8 @@
 import { Star } from 'lucide-react';
 import { useState } from 'react';
 import Button from '../../../UIKIT/Button/Button';
-import { Textarea } from '@/components/ui/textarea';
+// import { Textarea } from '@/components/ui/textarea';
+
 import axios from 'axios';
 
 import { useLocalStorage } from '@/app/shared/hooks/useLocalStorage';
@@ -41,13 +42,13 @@ export default function ProductsReview() {
         ))}
       </div>
       <div>
-        <Textarea
+        {/* <Textare
           value={review}
           onChange={e => setReview(e.currentTarget.value)}
           maxLength={250}
           rows={10}
           style={{ resize: 'none' }}
-        />
+        /> */}
         {review.length} / 250
       </div>
       <div>

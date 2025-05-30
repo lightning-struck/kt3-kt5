@@ -23,7 +23,7 @@ export const Auth = () => {
           });
 
           const { data } = await instance.get('/user/me');
-          setUser(data.id, data.login);
+          setUser(data.id, data.login,  data.email, data.phone);
           
           AxiosInterceptor.setAuthToken(token);
         }

@@ -2,11 +2,12 @@
 import Button from '@/app/shared/components/UIKIT/Button/Button';
 import s from './page.module.scss';
 import { useParams } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'swiper/swiper-bundle.css';
 import Image from 'next/image';
 import { Container } from '@/app/shared/components/UIKIT/Container/Container';
 import { useBasketStore } from '@/app/shared/core/providers/basketProvider';
+import ProductsReview from '@/app/shared/components/routes/Products/ProductsReview/ProductsReview';
 import {
   Dialog,
   DialogContent,
@@ -16,22 +17,71 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import ProductsMark from '@/app/shared/components/routes/Products/ProductsMark/ProductsMark';
+import { useUserStore } from '@/app/shared/core/providers/userProvider';
 
 export default function Page() {
   const params = useParams();
   console.log(params);
   const { basketAction, basketItems } = useBasketStore(state => state);
+  const product = {
+    id: 1
+  } 
 
-  // Устанавливаем по умолчанию первую картинку
+
   const images: string[] = ['/pic1.svg', '/pic4.svg', '/pic3.svg', '/pic2.svg'];
 
-  // Инициализируем с первой картинкой
   const [selectedImage, setSelectedImage] = useState<string>(images[0]);
+  const { user_login, user_id, user_email, user_phone, setUser } = useUserStore(state => state);
+
+  const [userName, setUserName] = useState<string>(user_login ?? '')
+  const [userPhone, setUserPhone] = useState<string>(user_phone ?? '')
+  const [userEmail, setUserEmail] = useState<string>(user_email ?? '')
+  const [isSuccess, setSuccess] = useState<boolean>(false)
+  const [successMessage, setSuccessMessage] = useState<string>('')
+  useEffect(() => {
+    setUserEmail(user_email);
+    setUserName(user_login);
+    setUserPhone(user_phone ?? '');
+  }, [user_login, user_email, user_phone]);
 
   const handleImageClick = (image: string) => {
     setSelectedImage(image);
   };
+  const quickBuy = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
 
+    const data = {
+      productId: formData.get('productId'),
+      phone: formData.get('phone'),
+      name: formData.get('name'),
+      email: formData.get('email')
+    };
+
+    try {
+      const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + '/product/quick_order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (result.status === 200) {
+        
+       
+        setSuccess(true)
+        setSuccessMessage('Спасибо за заказ! Номер вашего заказа: ' + result.body.orderId)
+      } else {
+        alert('Ошибка: ' + (result.message || 'Не удалось оформить заказ'));
+      }
+    } catch (error) {
+      console.log(error);
+      alert('Ошибка сети, попробуйте позже');
+    }
+  };
   return (
     <Container>
       <div className={s.ProductPage}>
@@ -126,6 +176,67 @@ export default function Page() {
             <Button size="auto" style="black_solid" onClick={() => void basketAction()}>
               Add to Cart
             </Button>
+            <br />
+
+            <Button size='auto' style='black_outline'>
+              <Dialog>
+                <DialogTrigger>Купить в 1 клик</DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Купить в 1 клик</DialogTitle>
+                    <DialogDescription>
+
+                      {!isSuccess ? <form onSubmit={quickBuy} className="space-y-4">
+                        <div>
+                          <label htmlFor="phone" className="block mb-1">Телефон*</label>
+                          <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            required
+                            className={s.input}
+                            placeholder="+7 (___) ___-__-__"
+                            value={userPhone}
+                            onChange={(ev) => setUserPhone(ev.target.value)}
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="name" className="block mb-1">Имя</label>
+                          <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            className={s.input}
+                            placeholder="Ваше имя"
+                            value={userName}
+                            onChange={(ev) => setUserName(ev.target.value)}
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="email" className="block mb-1">Email</label>
+                          <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            className={s.input}
+                            placeholder="Ваш email"
+                            value={userEmail}
+                            onChange={(ev) => setUserEmail(ev.target.value)}
+                          />
+                        </div>
+                        <input type="hidden" name="productId" value={product.id} />
+                        <button
+                          type="submit"
+                          className="w-full bg-black text-white py-2 rounded hover:bg-gray-800"
+                        >
+                          Заказать
+                        </button>
+                      </form> : successMessage}
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
+            </Button>
           </div>
 
           <div className={s.ProductPage__feat}>
@@ -195,19 +306,8 @@ export default function Page() {
         </div>
       </div>
       <ProductsMark />
-      <ProductsReview/>
-      {/* <Dialog>
-        <DialogTrigger>Open</DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Are you absolutely sure?</DialogTitle>
-            <DialogDescription>
-              This action cannot be undone. This will permanently delete your account and remove your data from our
-              servers.
-            </DialogDescription>
-          </DialogHeader>
-        </DialogContent>
-      </Dialog> */}
+      <ProductsReview />
+
     </Container>
   );
 }

@@ -79,7 +79,8 @@ export default function Page() {
         const { body } = data;
         setValue(body.token);
         AxiosInterceptor.setAuthToken(data.token)
-        setUser(1, body.user.login);
+        setUser(1, body.user.login, body.user.email, body.user.phone);
+      
         router.push('/');
       } else {
        alert('false')

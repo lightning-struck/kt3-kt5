@@ -6,9 +6,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { Input } from '@/components/ui/input';
 import Button from '@/app/shared/components/UIKIT/Button/Button';
 import Image from 'next/image';
-// import {
-//   homeListProductsBestSellers,
-// } from '@/app/shared/components/routes/Home/HomeListProducts/homeListProductsData';
+
 
 interface Product {
   id: string;

@@ -6,3 +6,4 @@ export const router = express.Router()
 
 router.use('/user', userRouter)
 router.use('/product', productRouter) // -> localhost:3000/product/create_product
+

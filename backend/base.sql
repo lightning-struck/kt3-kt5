@@ -91,3 +91,33 @@ CREATE TABLE product_filter_items(
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP  
 )
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    --
+    user_id INT, 
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    status TEXT NOT NULL DEFAULT 'NEW', 
+    total_price FLOAT NOT NULL,
+    phone TEXT NOT NULL,
+    name TEXT,
+    email TEXT,
+    address TEXT,
+    comment TEXT,
+    --
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP
+);
+
+CREATE TABLE order_items (
+    id SERIAL PRIMARY KEY,
+    --
+    order_id INT NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(id),
+    product_id INT NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES products(id),
+    quantity INT NOT NULL DEFAULT 1,
+    price_at_order FLOAT NOT NULL, 
+    --
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP
+);

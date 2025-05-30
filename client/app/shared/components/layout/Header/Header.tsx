@@ -45,7 +45,7 @@ const Header = () => {
   const signoutHandler = () => {
     removeValue();
     delete axiosInstance.defaults.headers.common['Authorization'];
-    setUser(0, '');
+    setUser(0, '', '', '');
   };
   const path = usePathname();
   const products = [1, 2, 3, 4];

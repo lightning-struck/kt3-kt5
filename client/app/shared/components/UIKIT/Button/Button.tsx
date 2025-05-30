@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 interface ButtonProps {
   children: ReactNode;
   size: 's' | 'm' | 'l' | 'auto';
-  onClick: () => void;
+  onClick?: () => void;
   style: 'black_outline' | 'black_solid' | 'white_outline' | 'white_solid';
 }
 
